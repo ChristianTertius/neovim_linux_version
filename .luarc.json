@@ -1,0 +1,6 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "file_ignore_patterns"
+    ]
+}
