@@ -18,6 +18,29 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
+		-- Configure LSP UI (borders untuk semua floating windows)
+		local border = "rounded"
+
+		-- Set transparent background untuk floating windows
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+
+		-- Override default handlers untuk menambahkan border
+		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+			border = border,
+		})
+
+		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+			border = border,
+		})
+
+		-- Configure diagnostic floating window
+		vim.diagnostic.config({
+			float = {
+				border = border,
+			},
+		})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -59,17 +82,8 @@ return {
 				opts.desc = "Go to next diagnostic"
 				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
-				keymap.set("n", "K", function()
-					vim.lsp.buf.hover({
-						border = "rounded",
-						-- Optional: custom highlight
-						winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder",
-					})
-				end, {
-					noremap = true,
-					silent = true,
-					desc = "Show documentation for what is under cursor",
-				})
+				opts.desc = "Show documentation for what is under cursor"
+				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -81,7 +95,7 @@ return {
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -160,7 +174,7 @@ return {
 					},
 				})
 			end,
-			-- TAMBAHIN INI: PHP LSP (Intelephense)
+			-- PHP LSP (Intelephense)
 			["intelephense"] = function()
 				lspconfig["intelephense"].setup({
 					capabilities = capabilities,
