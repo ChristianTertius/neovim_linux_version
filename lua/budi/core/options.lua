@@ -63,3 +63,25 @@ opt.foldcolumn = "1" -- Menampilkan kolom fold di sisi kiri.
 --   augroup END
 -- ]])
 vim.opt.autochdir = false
+
+-- **test save fold**
+-- Auto save and restore folds
+vim.opt.foldmethod = "manual" -- atau 'indent', 'syntax', dll
+vim.opt.viewoptions = "folds,cursor"
+
+-- Create autocmd group
+local save_fold = vim.api.nvim_create_augroup("Persistent Folds", { clear = true })
+
+-- Save fold on write
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	pattern = "*.*",
+	group = save_fold,
+	command = "mkview",
+})
+
+-- Load fold on open
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	pattern = "*.*",
+	group = save_fold,
+	command = "silent! loadview",
+})
