@@ -66,5 +66,6 @@ return {
 		{ "<leader>8", "<cmd>lua require('harpoon.ui').nav_file(8)<cr>", desc = "󰛢 Harpoon buffer 8" },
 		{ "<leader>9", "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", desc = "󰛢 Harpoon buffer 9" },
 		{ "<leader>0", "<cmd>lua require('harpoon.ui').nav_file(10)<cr>", desc = "󰛢 Harpoon buffer 10" },
+		{ "<leader>jk", "<cmd>Telescope harpoon marks<cr>", desc = "telescope harpoon" },
 	},
 }
