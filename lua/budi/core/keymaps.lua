@@ -124,3 +124,15 @@ vim.keymap.set("n", "<leader>cur", function()
 	vim.opt.guicursor = ""
 	print("Cursor set to block")
 end, { desc = "Set cursor to block" })
+
+vim.keymap.set("n", "<leader>za", function()
+	if vim.wo.wrap then
+		vim.wo.wrap = false
+		vim.wo.linebreak = false
+		print("Wrap: OFF")
+	else
+		vim.wo.wrap = true
+		vim.wo.linebreak = true
+		print("Wrap: ON")
+	end
+end, { desc = "Toggle wrap linebreak" })
