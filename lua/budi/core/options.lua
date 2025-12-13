@@ -85,3 +85,4 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	group = save_fold,
 	command = "silent! loadview",
 })
+-- vim.opt.guicursor = ""
