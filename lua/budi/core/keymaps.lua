@@ -12,6 +12,7 @@ keymap.set("n", "<leader>p", "V$%", { desc = "pindah ke atas" })
 keymap.set("v", "<A-j>", ":m .+1<CR>==", { desc = "pindah ke atas" })
 keymap.set("v", "<A-k>", ":m .-2<CR>==", { desc = "pindah ke bawah" })
 
+keymap.set("n", "<leader>re", "3:ToggleTerm direction=float<CR>", { noremap = true, silent = true, desc = "Floating" })
 keymap.set("n", "<leader>tt", ":ToggleTerm direction=float<CR>", { noremap = true, silent = true, desc = "Floating" })
 keymap.set("n", "<leader>tr", ":2ToggleTerm direction=float<CR>", { noremap = true, silent = true, desc = "2Floating" })
 keymap.set(

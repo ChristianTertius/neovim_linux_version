@@ -83,7 +83,7 @@ return {
 				"supermaven-inc/supermaven-nvim",
 				config = function()
 					require("supermaven-nvim").setup({
-						disable_inline_completion = true,
+						-- disable_inline_completion = true,
 					})
 				end,
 			},
@@ -200,8 +200,8 @@ return {
 					-- TODO: I don't like this at all for completion window, it takes up way too much space.
 					--  However, I think the docs one could be OK, but I need to fix the highlights for it
 					--
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+					-- completion = cmp.config.window.bordered(),
+					-- documentation = cmp.config.window.bordered(),
 				},
 			})
 		end,
