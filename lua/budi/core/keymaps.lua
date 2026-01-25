@@ -3,6 +3,9 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- disable record default keymap and create :Record keymap
+keymap.set("n", "q", "<nop>", opts)
+
 keymap.set("n", "gh", "gg", { silent = true, desc = "go to top" })
 keymap.set("n", "<leader>as", "o<esc>k", { noremap = true, silent = true, desc = "newline for normal mode" })
 keymap.set("i", "<F2>", "<?= ?> <Left><Left><left>", { noremap = true, silent = true })
