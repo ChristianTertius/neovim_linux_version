@@ -86,3 +86,16 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	command = "silent! loadview",
 })
 vim.opt.guicursor = ""
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "text", "netrw" },
+	callback = function()
+		vim.keymap.set("n", "gx", function()
+			local word = vim.fn.expand("<cfile>")
+			if word:match("^https?://") or word:match("^www%.") then
+				vim.fn.jobstart({ "wslview", word }, { detach = true })
+			else
+				vim.cmd("normal! gx")
+			end
+		end, { buffer = true })
+	end,
+})
