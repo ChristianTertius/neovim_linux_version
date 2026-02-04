@@ -30,11 +30,15 @@ return {
 						end,
 						color = { fg = "#a6e3a1" },
 					},
-					-- Linter info
+					-- Linter info (aman jika plugin lint tidak dimuat)
 					{
 						function()
+							local ok, lint = pcall(require, "lint")
+							if not ok or not lint then
+								return ""
+							end
 							local buf = vim.api.nvim_get_current_buf()
-							local linters = require("lint").linters_by_ft[vim.bo[buf].filetype]
+							local linters = lint.linters_by_ft[vim.bo[buf].filetype]
 							if linters then
 								return "  " .. table.concat(linters, ", ")
 							end
@@ -45,7 +49,7 @@ return {
 					-- LSP info
 					{
 						function()
-							local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+							local clients = vim.lsp.get_clients({ buffer = 0 })
 							if #clients == 0 then
 								return ""
 							end

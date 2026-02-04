@@ -44,8 +44,8 @@ return {
 				if harpoon_bufnr ~= -1 then
 					local harpoon_winid = vim.fn.bufwinid(harpoon_bufnr)
 					if harpoon_winid ~= -1 then
-						vim.api.nvim_win_set_option(harpoon_winid, "relativenumber", true)
-						vim.api.nvim_win_set_option(harpoon_winid, "number", true)
+						vim.api.nvim_set_option_value("relativenumber", true, { win = harpoon_winid })
+						vim.api.nvim_set_option_value("number", true, { win = harpoon_winid })
 					end
 				end
 			end, 10)
