@@ -104,101 +104,78 @@ return {
       virtual_text = true,
     })
     mason_lspconfig.setup({
-      -- default handler for installed servers
+      -- Default handler untuk semua LSP yang terinstall
       function(server_name)
-        -- https://github.com/neovim/nvim-lspconfig/pull/3232#issuecomment-2331025714
-        if server_name == "tsserver" then
-          server_name = "tsserver"
-        end
-        -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-        require("lspconfig")[server_name].setup({
-          capabilities = capabilities,
-        })
-
         lspconfig[server_name].setup({
           capabilities = capabilities,
         })
       end,
-      ["svelte"] = function()
-        -- configure svelte server
-        lspconfig["svelte"].setup({
+
+      -- Svelte: auto-reload saat .js/.ts berubah
+      svelte = function()
+        lspconfig.svelte.setup({
           capabilities = capabilities,
           on_attach = function(client, bufnr)
             vim.api.nvim_create_autocmd("BufWritePost", {
-              pattern = { "*.js", "*.ts" },
+              pattern = { ".js", ".ts" },
               callback = function(ctx)
-                -- Here use ctx.match instead of ctx.file
-                client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+                client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
               end,
             })
           end,
         })
       end,
-      ["graphql"] = function()
-        -- configure graphql language server
-        lspconfig["graphql"].setup({
+
+      -- GraphQL: tambah support untuk React & Svelte
+      graphql = function()
+        lspconfig.graphql.setup({
           capabilities = capabilities,
           filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
         })
       end,
-      ["emmet_ls"] = function()
-        -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
+
+      -- Emmet: HTML/CSS abbreviations
+      emmet_ls = function()
+        lspconfig.emmet_ls.setup({
           capabilities = capabilities,
           filetypes = {
-            "html",
-            "typescriptreact",
-            "javascriptreact",
-            "css",
-            "sass",
-            "scss",
-            "less",
-            "svelte",
-            "php",
-            "blade",
+            "html", "typescriptreact", "javascriptreact",
+            "css", "sass", "scss", "less",
+            "svelte", "php", "blade"
           },
         })
       end,
-      ["lua_ls"] = function()
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
+
+      -- Lua: khusus untuk Neovim config
+      lua_ls = function()
+        lspconfig.lua_ls.setup({
           capabilities = capabilities,
           settings = {
             Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
+              diagnostics = { globals = { "vim" } },
+              completion = { callSnippet = "Replace" },
             },
           },
         })
       end,
-      -- PHP LSP (Intelephense)
-      ["intelephense"] = function()
-        lspconfig["intelephense"].setup({
+
+      -- PHP: Intelephense
+      intelephense = function()
+        lspconfig.intelephense.setup({
           capabilities = capabilities,
-          root_dir = function(fname)
-            return lspconfig.util.root_pattern("composer.json", ".git")(fname)
-                or lspconfig.util.find_git_ancestor(fname)
-                or vim.fn.getcwd() -- Fallback ke current working directory
-          end,
+          root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
           settings = {
             intelephense = {
-              files = {
-                maxSize = 5000000, -- Max file size to parse
-              },
-              environment = {
-                phpVersion = "8.2", -- Sesuaikan sama versi PHP kamu
-              },
+              files = { maxSize = 5000000 },
+              environment = { phpVersion = "8.2" },
             },
           },
         })
       end,
-      ["html"] = function()
-        lspconfig["html"].setup({
+
+      -- HTML: support PHP & Blade
+      html = function()
+        lspconfig.html.setup({
           capabilities = capabilities,
           filetypes = { "html", "blade", "php" },
         })
