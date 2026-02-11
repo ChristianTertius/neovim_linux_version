@@ -65,6 +65,7 @@ keymap.set("n", "<leader>cot", "<cmd>colorscheme tokyonight<CR>", { desc = "chan
 keymap.set("n", "<leader>cok", "<cmd>colorscheme kanagawa<CR>", { desc = "change to kanagawa" })
 keymap.set("n", "<leader>cos", "<cmd>colorscheme shine<CR>", { desc = "change to shine" })
 keymap.set("n", "<leader>cor", "<cmd>colorscheme rose-pine-moon<CR>", { desc = "change to rose-pine" })
+keymap.set("n", "<leader>coc", "<cmd>colorscheme carbonfox<CR>", { desc = "change to carbonfox" })
 keymap.set("n", "<leader>col", "<cmd>set bg=light<cr>", { desc = "change to light" })
 keymap.set("n", "<leader>cod", "<cmd>set bg=dark<cr>", { desc = "change to dark" })
 

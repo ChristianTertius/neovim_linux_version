@@ -66,4 +66,5 @@ return {
 		name = "rose-pine",
 		config = function() end,
 	},
+	{ "EdenEast/nightfox.nvim", name = "nightfox", config = function() end },
 }
