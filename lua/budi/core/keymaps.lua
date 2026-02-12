@@ -27,7 +27,7 @@ keymap.set(
 keymap.set("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Term" })
 keymap.set("n", "ZAQ", "<cmd>qa!<CR>", { desc = "quit semuanya" })
 keymap.set("i", "jk", "<ESC>", { desc = "Keluar dari insert mode" })
-keymap.set("i", "dw", "<C-w>", { desc = "Delete word by double d" })
+-- keymap.set("i", "dw", "<C-w>", { desc = "Delete word by double d" })
 -- keymap.set("i", "cl", "console.log()<Left>", { desc = "Delete word by double d" })
 -- keymap.set("i", "db", "<ESC>ldwi", { desc = "Delete word kedepan" })
 keymap.set("i", "<C-s>", "<ESC>:w<CR>", { desc = "Save and go to normal mode" })
