@@ -50,14 +50,14 @@ return {
 
 		-- transparent background
 		vim.cmd([[
-		    highlight TelescopeNormal guibg=NONE ctermbg=NONE
-		    highlight TelescopeBorder guibg=NONE ctermbg=NONE
-		    highlight TelescopePromptNormal guibg=NONE ctermbg=NONE
-		    highlight TelescopePromptBorder guibg=NONE ctermbg=NONE
-		    highlight TelescopeResultsNormal guibg=NONE ctermbg=NONE
-		    highlight TelescopeResultsBorder guibg=NONE ctermbg=NONE
-		    highlight TelescopePreviewNormal guibg=NONE ctermbg=NONE
-		    highlight TelescopePreviewBorder guibg=NONE ctermbg=NONE
+		    highlight TelescopeNormal         guibg=NONE ctermbg=NONE
+		    highlight TelescopeBorder         guibg=NONE ctermbg=NONE
+		    highlight TelescopePromptNormal   guibg=NONE ctermbg=NONE
+		    highlight TelescopePromptBorder   guibg=NONE ctermbg=NONE
+		    highlight TelescopeResultsNormal  guibg=NONE ctermbg=NONE
+		    highlight TelescopeResultsBorder  guibg=NONE ctermbg=NONE
+		    highlight TelescopePreviewNormal  guibg=NONE ctermbg=NONE
+		    highlight TelescopePreviewBorder  guibg=NONE ctermbg=NONE
 		  ]])
 
 		-- set keymaps
