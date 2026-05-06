@@ -41,7 +41,14 @@ return {
 				end,
 			})
 
-			vim.cmd("colorscheme tokyonight")
+			-- vim.cmd("colorscheme tokyonight")
+		end,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		name = "kanagawa",
+		config = function()
+			vim.cmd("colorscheme kanagawa")
 		end,
 	},
 	{
@@ -56,15 +63,10 @@ return {
 		name = "rose-pine",
 		config = function() end,
 	},
-	{
-		"rebelot/kanagawa.nvim",
-		name = "kanagawa",
-		config = function() end,
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function() end,
-	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	config = function() end,
+	-- },
 	{ "EdenEast/nightfox.nvim", name = "nightfox", config = function() end },
 }
