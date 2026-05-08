@@ -201,6 +201,16 @@ return {
 					filetypes = { "html", "blade", "php" },
 				})
 			end,
+			vim.api.nvim_create_autocmd("BufRead", {
+				pattern = { "docker-compose*.yml", "docker-compose*.yaml", "compose.yml", "compose.yaml" },
+				callback = function()
+					vim.lsp.start({
+						name = "docker-compose-language-service",
+
+						cmd = { "docker-compose-langserver", "--stdio" },
+					})
+				end,
+			}),
 		})
 	end,
 }
