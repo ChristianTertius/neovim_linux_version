@@ -83,5 +83,6 @@ return {
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
+		keymap.set("n", "<leader>fp", "<cmd>Telescope resume<cr>", { desc = "Resume last picker" })
 	end,
 }

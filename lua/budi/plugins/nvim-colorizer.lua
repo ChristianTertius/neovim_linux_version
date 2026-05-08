@@ -1,8 +1,11 @@
 return {
 	{
 		"norcalli/nvim-colorizer.lua",
+		event = { "BufReadPre", "BufNewFile" }, -- lazy load saat buka file
+		keys = {
+			{ "<leader>tc", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer" },
+		},
 		config = function()
-			-- Setup dengan filetypes kosong (tidak aktif otomatis)
 			require("colorizer").setup({}, {
 				RGB = true,
 				RRGGBB = true,
@@ -14,9 +17,6 @@ return {
 				css_fn = true,
 				mode = "background",
 			})
-
-			-- Keybinding untuk toggle
-			vim.keymap.set("n", "<leader>tc", "<cmd>ColorizerToggle<cr>", { desc = "Toggle Colorizer" })
 		end,
 	},
 }
