@@ -79,10 +79,14 @@ return {
 		-- 	builtin.grep_string({ search = word })
 		-- end)
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd using ripgrep" })
-		keymap.set("n", "<space>fh", require("telescope.builtin").help_tags)
+		keymap.set("n", "<space>fh", require("telescope.builtin").help_tags, { desc = "find helps tags" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 		keymap.set("n", "<leader>fp", "<cmd>Telescope resume<cr>", { desc = "Resume last picker" })
+		-- LSP navigation
+		keymap.set("n", "<leader>fgd", "<cmd>Telescope lsp_definitions<cr>", { desc = "LSP definitions" })
+		keymap.set("n", "<leader>fgr", "<cmd>Telescope lsp_references<cr>", { desc = "LSP references" })
+		keymap.set("n", "<leader>fgi", "<cmd>Telescope lsp_implementations<cr>", { desc = "LSP implementations" })
 	end,
 }
