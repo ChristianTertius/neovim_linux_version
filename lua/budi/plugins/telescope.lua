@@ -84,7 +84,7 @@ return {
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 		keymap.set("n", "<leader>fp", "<cmd>Telescope resume<cr>", { desc = "Resume last picker" })
-		-- LSP navigation ```` update
+		-- LSP navigation
 		keymap.set("n", "<leader>fgd", "<cmd>Telescope lsp_definitions<cr>", { desc = "LSP definitions" })
 		keymap.set("n", "<leader>fgr", "<cmd>Telescope lsp_references<cr>", { desc = "LSP references" })
 		keymap.set("n", "<leader>fgi", "<cmd>Telescope lsp_implementations<cr>", { desc = "LSP implementations" })
