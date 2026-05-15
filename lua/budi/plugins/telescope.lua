@@ -27,7 +27,7 @@ return {
 				file_ignore_patterns = {
 					"node_modules/",
 					"vendor/",
-					"storage/",
+					-- "storage/",
 					"node_modules\\",
 					".git/",
 					-- "dist/",
