@@ -6,18 +6,7 @@ return {
 		"windwp/nvim-ts-autotag",
 	},
 	config = function()
-		-- import nvim-treesitter plugin
-		local treesitter = require("nvim-treesitter.configs")
-
-		-- configure treesitter
-		treesitter.setup({
-			highlight = {
-				enable = true,
-			},
-			indent = { enable = true },
-			autotag = {
-				enable = true,
-			},
+		require("nvim-treesitter").setup({
 			ensure_installed = {
 				"go",
 				"json",
@@ -27,7 +16,6 @@ return {
 				"yaml",
 				"html",
 				"css",
-				"prisma",
 				"markdown",
 				"markdown_inline",
 				"svelte",
@@ -40,17 +28,19 @@ return {
 				"query",
 				"vimdoc",
 				"php",
+				"tsx",
+				"jsx",
 				"c",
 			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
 		})
+
+		-- Aktifkan treesitter highlight otomatis saat buka file
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function()
+				pcall(vim.treesitter.start)
+			end,
+		})
+
+		require("nvim-ts-autotag").setup()
 	end,
 }
