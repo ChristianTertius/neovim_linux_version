@@ -34,6 +34,10 @@ return {
 			border = border,
 		})
 
+		vim.diagnostic.config({
+			virtual_text = true,
+		})
+
 		-- Configure diagnostic floating window
 		vim.diagnostic.config({
 			float = {

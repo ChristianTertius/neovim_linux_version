@@ -21,7 +21,7 @@ return {
 			persist_mode = true,
 			direction = "horizontal",
 			close_on_exit = false,
-			shell = "zsh",
+			shell = "bash",
 			env = {
 				TERM = "xterm-256color",
 				GOCACHE = vim.fn.expand("~/.cache/go-build"),

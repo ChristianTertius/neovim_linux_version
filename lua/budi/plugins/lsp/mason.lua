@@ -27,6 +27,7 @@ return {
 				"html",
 				"cssls",
 				"tailwindcss",
+				"gopls",
 				"svelte",
 				"lua_ls",
 				"graphql",

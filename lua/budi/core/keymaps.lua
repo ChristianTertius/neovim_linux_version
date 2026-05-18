@@ -123,7 +123,7 @@ keymap.set("n", "<leader>,,", function()
 	vim.cmd(":%s/\r//g")
 end)
 -- Di init.lua
-vim.keymap.set("n", "<leader>rr", ":source $MYVIMRC<CR>", { desc = "Reload config" })
+vim.keymap.set("n", "<leader>rr", ":restart<CR>", { desc = "Reload config" })
 
 vim.keymap.set("n", "<leader>cur", function()
 	vim.opt.guicursor = ""
