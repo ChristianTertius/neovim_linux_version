@@ -32,13 +32,13 @@ return {
 					".git/",
 					-- "dist/",
 					"%.log",
-					"package%-lock%.json", -- menambahkan package-lock.json,
-					"composer%.lock", -- menambahkan composer.lock
+					"package%-lock%.json",
+					"composer%.lock",
 				},
 				mappings = {
 					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
+						["<C-k>"] = actions.move_selection_previous,
+						["<C-j>"] = actions.move_selection_next,
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 						-- ["<C-t>"] = trouble_telescope.smart_open_with_trouble,
 					},
