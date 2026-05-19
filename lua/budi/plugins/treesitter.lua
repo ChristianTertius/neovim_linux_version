@@ -16,6 +16,7 @@ return {
 				"yaml",
 				"html",
 				"css",
+				"php",
 				"markdown",
 				"markdown_inline",
 				"svelte",
@@ -28,19 +29,17 @@ return {
 				"query",
 				"vimdoc",
 				"php",
-				"tsx",
-				"jsx",
 				"c",
 			},
 		})
-
-		-- Aktifkan treesitter highlight otomatis saat buka file
 		vim.api.nvim_create_autocmd("FileType", {
 			callback = function()
-				pcall(vim.treesitter.start)
+				local ok = pcall(vim.treesitter.start)
+				if ok then
+					vim.bo.syntax = "" -- matiin vim syntax lama
+				end
 			end,
 		})
-
 		require("nvim-ts-autotag").setup()
 	end,
 }
