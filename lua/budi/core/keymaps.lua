@@ -73,7 +73,7 @@ keymap.set("n", "<leader>cod", "<cmd>set bg=dark<cr>", { desc = "change to dark"
 keymap.set("n", "<leader>hi", ":nohl<CR>", { desc = "Clear search highlight" })
 -- buat remap untuk :![apapun]
 -- keymap.set("n", "<leader><leader>", ":! node .<CR>", { desc = "mencoba" })
-keymap.set("n", "<leader><leader>", ":! node .<CR>", { desc = "mencoba" })
+-- keymap.set("n", "<leader><leader>", ":! node .<CR>", { desc = "mencoba" })
 -- file explorer
 keymap.set("n", "<leader>ef", ":Ex<CR>", { desc = "File explorer" })
 
