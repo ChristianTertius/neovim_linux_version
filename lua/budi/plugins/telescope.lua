@@ -11,18 +11,19 @@ return {
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
-		-- local transform_mod = require("telescope.actions.mt").transform_mod
-		-- local trouble = require("trouble")
-		-- local trouble_telescope = require("trouble.providers.telescope")
-		-- or create your custom action
-		-- local custom_actions = transform_mod({
-		--   open_trouble_qflist = function(prompt_bufnr)
-		--     trouble.toggle("quickfix")
-		--   end,
-		-- })
 
 		telescope.setup({
 			defaults = {
+				layout_strategy = "horizontal",
+				layout_config = {
+					horizontal = {
+						prompt_position = "top",
+						width = { padding = 0 },
+						height = { padding = 0 },
+						preview_width = 0.5,
+					},
+				},
+				sorting_strategy = "ascending",
 				path_display = { "absolute" },
 				file_ignore_patterns = {
 					"node_modules/",
@@ -32,13 +33,13 @@ return {
 					".git/",
 					-- "dist/",
 					"%.log",
-					"package%-lock%.json", -- menambahkan package-lock.json,
-					"composer%.lock", -- menambahkan composer.lock
+					"package%-lock%.json",
+					"composer%.lock",
 				},
 				mappings = {
 					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
+						["<C-k>"] = actions.move_selection_previous,
+						["<C-j>"] = actions.move_selection_next,
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 						-- ["<C-t>"] = trouble_telescope.smart_open_with_trouble,
 					},
@@ -74,10 +75,7 @@ return {
 			end
 			builtin.grep_string({ search = text })
 		end)
-		-- vim.keymap.set("n", "<leader>pWs", function()
-		-- 	local word = vim.fn.expand("<cWORD>")
-		-- 	builtin.grep_string({ search = word })
-		-- end)
+
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd using ripgrep" })
 		keymap.set("n", "<space>fh", require("telescope.builtin").help_tags, { desc = "find helps tags" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
@@ -88,6 +86,6 @@ return {
 		keymap.set("n", "<leader>fgd", "<cmd>Telescope lsp_definitions<cr>", { desc = "LSP definitions" })
 		keymap.set("n", "<leader>fgr", "<cmd>Telescope lsp_references<cr>", { desc = "LSP references" })
 		keymap.set("n", "<leader>fgi", "<cmd>Telescope lsp_implementations<cr>", { desc = "LSP implementations" })
-		vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files theme=ivy<cr>")
+		keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files theme=ivy<cr>")
 	end,
 }
