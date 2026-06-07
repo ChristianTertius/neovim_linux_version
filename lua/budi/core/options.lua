@@ -105,8 +105,8 @@ vim.api.nvim_create_autocmd("User", {
 	pattern = "TelescopePreviewerLoaded",
 	callback = function()
 		vim.wo.wrap = true
-		vim.wo.linebreak = true -- wrap di word boundary, bukan di tengah kata
-		vim.wo.breakindent = true -- indent preserved saat wrap
+		vim.wo.linebreak = true
+		vim.wo.breakindent = true
 	end,
 })
 
