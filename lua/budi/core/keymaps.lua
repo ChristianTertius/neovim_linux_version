@@ -6,6 +6,28 @@ local opts = { noremap = true, silent = true }
 -- disable record default keymap and create :Record keymap
 keymap.set("n", "q", "<nop>", opts)
 
+-- quickfixlist prev & next
+local function toggle_quickfixlist()
+	for _, win in ipairs(vim.fn.getwininfo()) do
+		if win.quickfix == 1 then
+			vim.cmd("cclose")
+			return
+		end
+	end
+	vim.cmd("copen")
+end
+
+local function remove_qf_item()
+	local qflist = vim.fn.getqflist()
+	local line = vim.fn.line(".")
+	table.remove(qflist, line)
+	vim.fn.setqflist(qflist, "r")
+end
+
+keymap.set("n", "<leader>qj", ":cnext<CR>", { noremap = true, silent = true, desc = "next quickfixlist" })
+keymap.set("n", "<leader>qk", ":cprev<CR>", { noremap = true, silent = true, desc = "previous quickfixlist" })
+keymap.set("n", "<leader>qq", toggle_quickfixlist, { noremap = true, silent = true, desc = "previous quickfixlist" })
+keymap.set("n", "<leader>qd", remove_qf_item, { desc = "remove quickfix item" })
 keymap.set("n", "gh", "gg", { silent = true, desc = "go to top" })
 keymap.set("n", "<leader>as", "o<esc>k", { noremap = true, silent = true, desc = "newline for normal mode" })
 keymap.set("i", "<F2>", "<?= ?> <Left><Left><left>", { noremap = true, silent = true })
