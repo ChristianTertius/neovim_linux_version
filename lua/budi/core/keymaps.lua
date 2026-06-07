@@ -24,6 +24,7 @@ local function remove_qf_item()
 	vim.fn.setqflist(qflist, "r")
 end
 
+keymap.set("n", "<leader>lr", ":Lazy reload ", { noremap = true, desc = "next quickfixlist" })
 keymap.set("n", "<leader>qj", ":cnext<CR>", { noremap = true, silent = true, desc = "next quickfixlist" })
 keymap.set("n", "<leader>qk", ":cprev<CR>", { noremap = true, silent = true, desc = "previous quickfixlist" })
 keymap.set("n", "<leader>qq", toggle_quickfixlist, { noremap = true, silent = true, desc = "previous quickfixlist" })
