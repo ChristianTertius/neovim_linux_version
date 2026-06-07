@@ -147,10 +147,10 @@ end)
 -- Di init.lua
 vim.keymap.set("n", "<leader>rr", ":source $MYVIMRC<CR>", { desc = "Reload config" })
 
-vim.keymap.set("n", "<leader>cur", function()
-	vim.opt.guicursor = ""
-	print("Cursor set to block")
-end, { desc = "Set cursor to block" })
+-- vim.keymap.set("n", "<leader>cur", function()
+-- 	vim.opt.guicursor = ""
+-- 	print("Cursor set to block")
+-- end, { desc = "Set cursor to block" })
 
 vim.keymap.set("n", "<leader>za", function()
 	if vim.wo.wrap then

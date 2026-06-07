@@ -109,3 +109,10 @@ vim.api.nvim_create_autocmd("User", {
 		vim.wo.breakindent = true -- indent preserved saat wrap
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePre" }, {
+	pattern = "*",
+	callback = function()
+		vim.cmd("%s/\r//ge")
+	end,
+})
