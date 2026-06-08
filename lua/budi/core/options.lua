@@ -113,6 +113,12 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePre" }, {
 	pattern = "*",
 	callback = function()
+		if vim.bo.binary or vim.bo.filetype == "" then
+			return
+		end
+		if not vim.bo.modifiable then
+			return
+		end
 		vim.cmd("%s/\r//ge")
 	end,
 })
