@@ -5,7 +5,7 @@ return {
 		-- Hilangkan tampilan summary seperti "11 lines added"
 		preview_config = {
 			border = "none",
-			show_deleted = false,
+			-- show_deleted = false,
 		},
 
 		on_attach = function(bufnr)
