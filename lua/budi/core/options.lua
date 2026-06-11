@@ -7,7 +7,7 @@ opt.number = true
 opt.fileformat = "unix"
 opt.fileformats = "unix,dos"
 
-opt.scrolloff = 4
+opt.scrolloff = 3
 
 -- disable banner netrw dan add relative number into netrw
 vim.g.netrw_banner = 0
