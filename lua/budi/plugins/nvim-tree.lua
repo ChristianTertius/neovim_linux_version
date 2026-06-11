@@ -66,7 +66,11 @@ return {
 				ignore = false,
 			},
 		})
-
+		vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NvimTreeNormalFloat", { bg = "none" })
+		vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
+		vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#647992", bg = "none" })
 		vim.cmd([[
 		    augroup NvimTreeTransparent
 		    autocmd!
