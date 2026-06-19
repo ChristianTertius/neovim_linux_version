@@ -24,6 +24,10 @@ local function remove_qf_item()
 	vim.fn.setqflist(qflist, "r")
 end
 
+-- buffer prev & next
+keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "previous buffer" })
+keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "next buffer" })
+
 keymap.set("v", "<leader>sr", 'y:%s/<C-r>"/', { desc = "Replace visual selection" })
 keymap.set("n", "<leader>lr", ":Lazy reload ", { noremap = true, desc = "next quickfixlist" })
 keymap.set("n", "<leader>qj", ":cnext<CR>", { noremap = true, silent = true, desc = "next quickfixlist" })
