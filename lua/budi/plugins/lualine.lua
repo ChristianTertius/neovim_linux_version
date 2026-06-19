@@ -4,7 +4,17 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "auto",
+				theme = {
+					normal = {
+						a = { bg = "NONE", fg = "#cdd6f4" },
+						b = { bg = "NONE", fg = "#cdd6f4" },
+						c = { bg = "NONE", fg = "#cdd6f4" },
+						x = { bg = "NONE", fg = "#cdd6f4" },
+					},
+					inactive = {
+						c = { bg = "NONE", fg = "#6c7086" },
+					},
+				},
 				component_separators = "",
 				section_separators = "",
 			},
